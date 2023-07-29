@@ -19,9 +19,9 @@ const MainPage = () => {
           className={(navData) => (navData.isActive ? s.active : s.item)}
           id={counter.id}
         >
-          <div>
-            <div>{counter.value}</div>
-            <p>{counter.name}</p>
+          <div className={s.insideWrap}>
+            <div className={s.counterValue}>{counter.value}</div>
+            <p className={s.counterName}>{counter.name}</p>
           </div>
         </NavLink>
       ))}

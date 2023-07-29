@@ -1,6 +1,20 @@
+.wrap {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 30px;
+
+  /* background: #949398ff; */
+  background: #e0e0e0;
+  box-shadow: 9px 9px 18px #c3c3c3, -9px -9px 18px #fdfdfd;
+}
+
 .value {
   font-size: 100px;
-  margin: 20px 0px;
+  margin: 10px 0px 20px;
   /* color: #f4df4eff; */
 }
 
@@ -18,16 +32,43 @@
   box-shadow: 9px 9px 18px #c3c3c3, -9px -9px 18px #fdfdfd;
 }
 
-.wrap {
-  width: 300px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 30px;
-
-  /* background: #949398ff; */
+.btn:active {
   background: #e0e0e0;
-  box-shadow: 9px 9px 18px #c3c3c3, -9px -9px 18px #fdfdfd;
+  box-shadow: inset 11px 11px 22px #c3c3c3, inset -11px -11px 22px #fdfdfd;
+}
+
+.closeIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.valueInput {
+  background: #e0e0e0;
+  max-width: 290px;
+  height: 100px;
+  border: 0;
+  outline: 0;
+
+  font-size: 100px;
+  text-align: center;
+}
+
+.nameInput {
+  background: #e0e0e0;
+  max-width: 100px;
+  border: 0;
+  outline: 0;
+
+  font-size: 30px;
+}
+
+.counterName {
+  font-size: 30px;
+}
+
+.container {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

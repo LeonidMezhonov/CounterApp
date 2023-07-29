@@ -13,21 +13,19 @@ const CounterPageContainer = (props) => {
     return currentCounter ? currentCounter.value : 0;
   });
 
-  const plus = () => {
-    const newValue = counter + 1;
-    setCounter(newValue);
-    updateCounterValueById(parseInt(id), newValue);
-  };
-
-  const minus = () => {
-    const newValue = counter - 1;
-    setCounter(newValue);
-    updateCounterValueById(parseInt(id), newValue);
-  };
+  const [counterName, setName] = useState(() => {
+    const currentCounter = counters.find((c) => c.id === parseInt(id));
+    return currentCounter ? currentCounter.name : "untitled";
+  });
 
   return (
     <div className={s.wrap}>
-      <CounterPage minus={minus} plus={plus} counter={counter} />
+      <CounterPage
+        setCounter={setCounter}
+        setName={setName}
+        counter={counter}
+        name={counterName}
+      />
     </div>
   );
 };

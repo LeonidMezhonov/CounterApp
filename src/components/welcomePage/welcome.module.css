@@ -17,6 +17,11 @@
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
 
+.bigButton:active {
+  background: #e0e0e0;
+  box-shadow: inset 15px 15px 30px #c3c3c3, inset -15px -15px 30px #fdfdfd;
+}
+
 .off {
   display: none;
 }

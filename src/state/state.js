@@ -19,11 +19,20 @@ const CounterProvider = ({ children }) => {
     );
   };
 
+  const updateCounterName = (id, newName) => {
+    setCounters((prevCounters) =>
+      prevCounters.map((counter) =>
+        counter.id === id ? { ...counter, name: newName } : counter
+      )
+    );
+  };
+
   const value = {
     counters,
     setCounters,
     createCounter,
     updateCounterValueById,
+    updateCounterName,
     // Add other functions here
   };
 
