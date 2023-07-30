@@ -1,0 +1,17 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.loginBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  background: #e0e0e0;
+  box-shadow: 10px 10px 20px #c3c3c3, -10px -10px 20px #fdfdfd;
+}

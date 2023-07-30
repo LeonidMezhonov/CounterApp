@@ -1,7 +1,5 @@
 .App {
-  min-height: 100vh;
+  min-height: 80vh;
   font-family: sans-serif;
   text-align: center;
-
-  background: #e0e0e0;
 }
