@@ -1,21 +1,26 @@
-import { React, useState, useEffect } from "react";
+import {React, useEffect, useState} from "react";
 import s from "./welcome.module.css";
-import { useContext } from "react";
-import { CounterContext } from "../../state/state";
 import { useNavigate } from "react-router-dom";
+import {createCounter, getCounters} from "../../api/api";
 
 const Welcome = () => {
-  const { counters, createCounter } = useContext(CounterContext);
   const navigate = useNavigate();
-  const [creatingCounter, setCreatingCounter] = useState(false);
+  // const [creatingCounter, setCreatingCounter] = useState(false);
+  const [counters, setCounters] = useState([]);
 
-  const handleCreateCounter = () => {
-    const newCounter = createCounter();
-    setCreatingCounter(true);
-    navigate(`/counter/${newCounter.id}`);
+  useEffect(() => {
+    getCounters().then(counters => setCounters(counters));
+  }, []);
+
+  const handleCreateCounter =  () => {
+    createCounter({value: 0, name: "untitled"}).then((data) => {
+      navigate(`/counter/${data.id}`);
+    });
+
   };
 
-  if (counters.length === 0 && !creatingCounter) {
+  // if (counters.length === 0 && !creatingCounter) {
+  if (counters.length === 0) {
     return (
       <div className={s.container}>
         <button onClick={handleCreateCounter} className={s.bigButton}>

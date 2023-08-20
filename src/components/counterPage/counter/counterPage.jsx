@@ -1,7 +1,6 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./counterPage.module.css";
-import { CounterContext } from "../../../state/state";
 import { useParams } from "react-router";
 import { ReactComponent as CloseIcon } from "../../../assets/xmark-solid.svg";
 
@@ -13,8 +12,6 @@ const CounterPage = (props) => {
   };
 
   const { id } = useParams();
-  const { updateCounterName, updateCounterValueById } =
-    useContext(CounterContext);
 
   const [nameEditMode, setNameEditMode] = useState(false);
   const [counterName, setCounterName] = useState(props.name);
@@ -35,7 +32,7 @@ const CounterPage = (props) => {
 
   const handleChangeCounterName = (event) => {
     setCounterName(event.target.value);
-    updateCounterName(parseInt(id), event.target.value);
+    // updateCounterName(parseInt(id), event.target.value);
   };
 
   const activateValueEditMode = () => {
@@ -49,7 +46,7 @@ const CounterPage = (props) => {
   const handleChangeCounterValue = (event) => {
     const newValue = parseInt(event.target.value);
     setCounterValue(newValue);
-    updateCounterValueById(parseInt(id), newValue);
+    // updateCounterValueById(parseInt(id), newValue);
   };
 
   // Function to handle blur event on the input field
@@ -89,13 +86,13 @@ const CounterPage = (props) => {
   const plus = () => {
     const newValue = counterValue + 1; // Perform numerical addition
     setCounterValue(newValue);
-    updateCounterValueById(parseInt(id), newValue);
+    // updateCounterValueById(parseInt(id), newValue);
   };
 
   const minus = () => {
     const newValue = counterValue - 1; // Perform numerical subtraction
     setCounterValue(newValue);
-    updateCounterValueById(parseInt(id), newValue);
+    // updateCounterValueById(parseInt(id), newValue);
   };
 
   return (

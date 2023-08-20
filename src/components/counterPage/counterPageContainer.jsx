@@ -1,33 +1,46 @@
-import { React, useState, useContext } from "react";
+import {React, useState, useEffect} from "react";
 import CounterPage from "./counter/counterPage";
 import s from "./counterPageContainer.module.css";
-import { CounterContext } from "../../state/state";
-import { useParams } from "react-router";
+import {useParams} from "react-router";
+import {getCounterById} from "../../api/api";
 
-const CounterPageContainer = (props) => {
-  const { id } = useParams();
-  const { counters, updateCounterValueById } = useContext(CounterContext);
+const CounterPageContainer = () => {
+    const {id} = useParams();
+    const [counter, setCounter] = useState({});
 
-  const [counter, setCounter] = useState(() => {
-    const currentCounter = counters.find((c) => c.id === parseInt(id));
-    return currentCounter ? currentCounter.value : 0;
-  });
+    useEffect(() => {
+        getCounterById(id).then(data => setCounter(data))
+    }, [id])
 
-  const [counterName, setName] = useState(() => {
-    const currentCounter = counters.find((c) => c.id === parseInt(id));
-    return currentCounter ? currentCounter.name : "untitled";
-  });
+    const setName = (name) => {
+        setCounter((prevState) => {
+            return {
+                ...prevState,
+                name
+            }
+        })
+    }
 
-  return (
-    <div className={s.wrap}>
-      <CounterPage
-        setCounter={setCounter}
-        setName={setName}
-        counter={counter}
-        name={counterName}
-      />
-    </div>
-  );
+
+    const setValue = (value) => {
+        setCounter((prevState) => {
+            return {
+                ...prevState,
+                value
+            }
+        })
+    }
+
+    return (
+        <div className={s.wrap}>
+            <CounterPage
+                setCounter={setValue}
+                setName={setName}
+                counter={counter.value}
+                name={counter.name}
+            />
+        </div>
+    );
 };
 
 export default CounterPageContainer;
